@@ -25,6 +25,7 @@ public class Controller implements EventHandler {
     ModelAgenda modelAgenda;
     ModelEdit modelEdit;
     ModelJson modelJson;
+    ModelGroupe modelGroupe;
 
     private static Controller instance = null;
 
@@ -102,18 +103,32 @@ public class Controller implements EventHandler {
         }
         if (Button.class.getName().equals(e.getSource().getClass().getName())) {
 
-            String click = ((Button) e.getSource()).getText();
+            //String click = ((Button) e.getSource()).getText();
+            String click = ((Button) e.getSource()).getId();
+            System.out.println("click " + click);
 
             switch (click) {
-                case ("Sauvegarder"):
+                case ("ButtonSafe"):
                     modelAgenda.safe();
                     break;
-                case ("Edit"):
-                    modelEdit.edit("edit");
+                case ("ButtonEditContact"):
+                    modelEdit.edit("Edit");
                     break;
-                case ("New"):
+                case ("ButtonNewContact"):
+                    modelEdit.edit("New");
+                    break;
+
+                case ("ButtonNewGroupe"):
+                    modelGroupe.edit("new");
+                    break;
+
+                case ("ButtonShowJson"):
                     modelEdit.edit("new");
                     break;
+                case ("ButtonSearch"):
+                    modelEdit.edit("new");
+                    break;
+
                 case ("0"):
                 case ("1"):
                 case ("2"):
@@ -197,16 +212,20 @@ public class Controller implements EventHandler {
         }
     }
 
-    public void addModelAgenda(ModelAgenda m) {
+    public void setModelAgenda(ModelAgenda m) {
         this.modelAgenda = m;
     } //addModel()
 
-    public void addModelJson(ModelJson m) {
+    public void setModelJson(ModelJson m) {
         this.modelJson = m;
     } //addModel()
 
-    public void addModelEdit(ModelEdit m) {
+    public void setModelEdit(ModelEdit m) {
         this.modelEdit = m;
+    }//addModel()
+
+    public void setModelGroupe(ModelGroupe m) {
+        this.modelGroupe= m;
     } //addModel()
 
     public void initModelAgenda() {

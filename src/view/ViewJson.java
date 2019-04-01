@@ -43,7 +43,7 @@ public class ViewJson implements View {
     // private Controller controller;
 
     private final Node rootIcon = new ImageView(new Image(getClass().getResourceAsStream("/img/team.png")));
- 
+
     TreeItem<String> rootNode = new TreeItem<String>("MyCompany Human Resources", rootIcon);
 
     private EventHandler controller;
@@ -112,29 +112,13 @@ public class ViewJson implements View {
             System.out.println("textfield changed from " + oldValue + " to " + newValue);
         });
 
-      
         // TODO*/
     }
 
-    @FXML
-    private void Calculation(ActionEvent event) {
-        System.out.println("Ciaoooooooooooooooooooo");
-
-        this.controller.handle(event);
-    }
+   
 
     @FXML
-    private void SafeContact(ActionEvent event) {
-        this.controller.handle(event);
-    }
-
-    @FXML
-    private void Edit(ActionEvent event) {
-        this.controller.handle(event);
-    }
-
-    @FXML
-    private void Hide(ActionEvent event) {
+    private void ActionEvent(ActionEvent event) {
         initShow(false);
         // this.controller.handle(event);
     }
@@ -165,7 +149,7 @@ public class ViewJson implements View {
 
     private void initShow(boolean show) {
         try {
-            System.out.println("SCENE LISTE"+this.MenuBar.getScene());
+            System.out.println("SCENE LISTE" + this.MenuBar.getScene());
             Stage DashboardStage = (Stage) MenuBar.getScene().getWindow();
             //goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
             if (show) {

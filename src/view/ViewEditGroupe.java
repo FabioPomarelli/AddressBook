@@ -39,19 +39,31 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class ViewListe implements View {
+public class ViewEditGroupe implements View {
     // private Controller controller;
 
     private final Node rootIcon = new ImageView(new Image(getClass().getResourceAsStream("/img/team.png")));
-
+    //  private final Image depIcon
+    //         = new Image(getClass().getResourceAsStream("department.png"));
+    /* List<Employee> employees = Arrays.<Employee>asList(
+            new ListeContact("Ethan Williams", "Sales Department"),
+            new ListeContact("Emma Jones", "Sales Department"),
+            new ListeContact("Michael Brown", "Sales Department"),
+            new ListeContact("Anna Black", "Sales Department"),
+            new ListeContact("Rodger York", "Sales Department"),
+            new ListeContact("Susan Collins", "Sales Department"),
+            new ListeContact("Mike Graham", "IT Support"),
+            new ListeContact("Judy Mayer", "IT Support"),
+            new ListeContact("Gregory Smith", "IT Support"),
+            new ListeContact("Jacob Smith", "Accounts Department"),
+            new ListeContact("Isabella Johnson", "Accounts Department"));
+    
+     */
     TreeItem<String> rootNode = new TreeItem<String>("MyCompany Human Resources", rootIcon);
 
     private EventHandler controller;
     private List<ListeContact> contacts;
-    @FXML
-    private TreeView TreeViewGroupe;
-    @FXML
-    private TextField TextFieldNom;
+
     @FXML
     private TextField resultdisplay;
 
@@ -89,40 +101,20 @@ public class ViewListe implements View {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        TreeViewGroupe.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem>() {
-            @Override
-            public void changed(ObservableValue<? extends TreeItem> observable, TreeItem oldValue, TreeItem newValue) {
-
-                TreeItem<String> selectedItem = (TreeItem<String>) newValue;
-                TextFieldNom.setText("");
-                for (ListeContact contact : contacts) {
-
-                    if (contact.getName().equals(selectedItem.getValue())) {
-                        TextFieldNom.setText(selectedItem.getValue());
-                        System.out.println(this.getClass());
-
-                    }
-
-                }
-            }
-
-        });
-
-        TextFieldNom.textProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("textfield changed from " + oldValue + " to " + newValue);
-        });
-
-        // TODO*/
-    }
-
-
-    @FXML
-    private void ActionEvent(ActionEvent event) {
-         this.controller.handle(event);
     }
 
     @FXML
-    private void TreeViewEvent(ActionEvent event) {
+    private void SafeEditContact(ActionEvent event) {
+        this.controller.handle(event);
+    }
+
+    @FXML
+    private void AnnulerEditContact(ActionEvent event) {
+        this.controller.handle(event);
+    }
+
+    @FXML
+    private void MenuAction(ActionEvent event) {
         this.controller.handle(event);
     }
 
@@ -131,14 +123,10 @@ public class ViewListe implements View {
     public void update(Observable obs, Object obj) {
         Datas data = (Datas) obj;
 
-        initTreeView(data.getListeContact());
-
         GridPane forms = data.getFormulaire().getFormularieJavaFx();
 
         initGridPane(forms);
-
-        initShow(data.isShowViewListe());
-
+        initShow(data.isShowViewEdit());
     } //update()
 
     private void initGridPane(GridPane grid) {
@@ -147,7 +135,7 @@ public class ViewListe implements View {
 
     private void initShow(boolean show) {
         try {
-            System.out.println("SCENE LISTE" + this.MenuBar.getScene());
+            System.out.println("SCENE EDIT" + this.MenuBar.getScene());
             Stage DashboardStage = (Stage) MenuBar.getScene().getWindow();
             //goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
             if (show) {
@@ -159,41 +147,6 @@ public class ViewListe implements View {
         } catch (Exception e) {
 
         }
-
-    }
-
-    private void initTreeView(List<ListeContact> contacts) {
-        this.contacts = contacts;
-        rootNode.setExpanded(true);
-        for (ListeContact contact : contacts) {
-            TreeItem<String> empLeaf = new TreeItem<String>(contact.getName());
-            boolean found = false;
-            for (TreeItem<String> depNode : rootNode.getChildren()) {
-                if (depNode.getValue().contentEquals(contact.getDepartment())) {
-                    depNode.getChildren().add(empLeaf);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                TreeItem<String> depNode = new TreeItem<String>(
-                        contact.getDepartment()//,
-                //new ImageView(depIcon)
-                );
-                rootNode.getChildren().add(depNode);
-                depNode.getChildren().add(empLeaf);
-            }
-        }
-
-        TreeViewGroupe.setEditable(true);
-        TreeViewGroupe.setRoot(rootNode);
-
-        TreeViewGroupe.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
-            @Override
-            public TreeCell<String> call(TreeView<String> p) {
-                return new TextFieldTreeCellImpl();
-            }
-        });
 
     }
 

@@ -39,7 +39,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class ViewEdit implements View {
+public class ViewEditContact implements View {
     // private Controller controller;
 
     private final Node rootIcon = new ImageView(new Image(getClass().getResourceAsStream("/img/team.png")));
@@ -63,10 +63,7 @@ public class ViewEdit implements View {
 
     private EventHandler controller;
     private List<ListeContact> contacts;
-    @FXML
-    private TreeView TreeViewGroupe;
-    @FXML
-    private TextField TextFieldNom;
+
     @FXML
     private TextField resultdisplay;
 
@@ -104,46 +101,20 @@ public class ViewEdit implements View {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        TreeViewGroupe.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem>() {
-            @Override
-            public void changed(ObservableValue<? extends TreeItem> observable, TreeItem oldValue, TreeItem newValue) {
-
-                TreeItem<String> selectedItem = (TreeItem<String>) newValue;
-                TextFieldNom.setText("");
-                for (ListeContact contact : contacts) {
-
-                    if (contact.getName().equals(selectedItem.getValue())) {
-                        TextFieldNom.setText(selectedItem.getValue());
-                        System.out.println(this.getClass());
-
-                    }
-
-                }
-            }
-
-        });
-
-        TextFieldNom.textProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("textfield changed from " + oldValue + " to " + newValue);
-        });
-
-        initShow(false);
     }
 
     @FXML
-    private void Calculation(ActionEvent event) {
-        System.out.println("Ciaoooooooooooooooooooo");
-
+    private void SafeEditContact(ActionEvent event) {
         this.controller.handle(event);
     }
 
     @FXML
-    private void SafeContact(ActionEvent event) {
+    private void AnnulerEditContact(ActionEvent event) {
         this.controller.handle(event);
     }
 
     @FXML
-    private void TreeViewEvent(ActionEvent event) {
+    private void MenuAction(ActionEvent event) {
         this.controller.handle(event);
     }
 
@@ -151,8 +122,6 @@ public class ViewEdit implements View {
     @Override
     public void update(Observable obs, Object obj) {
         Datas data = (Datas) obj;
-
-        initTreeView(data.getListeContact());
 
         GridPane forms = data.getFormulaire().getFormularieJavaFx();
 
@@ -166,7 +135,7 @@ public class ViewEdit implements View {
 
     private void initShow(boolean show) {
         try {
-            System.out.println("SCENE EDIT"+this.MenuBar.getScene());
+            System.out.println("SCENE EDIT" + this.MenuBar.getScene());
             Stage DashboardStage = (Stage) MenuBar.getScene().getWindow();
             //goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
             if (show) {
@@ -178,41 +147,6 @@ public class ViewEdit implements View {
         } catch (Exception e) {
 
         }
-
-    }
-
-    private void initTreeView(List<ListeContact> contacts) {
-        this.contacts = contacts;
-        rootNode.setExpanded(true);
-        for (ListeContact contact : contacts) {
-            TreeItem<String> empLeaf = new TreeItem<String>(contact.getName());
-            boolean found = false;
-            for (TreeItem<String> depNode : rootNode.getChildren()) {
-                if (depNode.getValue().contentEquals(contact.getDepartment())) {
-                    depNode.getChildren().add(empLeaf);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                TreeItem<String> depNode = new TreeItem<String>(
-                        contact.getDepartment()//,
-                //new ImageView(depIcon)
-                );
-                rootNode.getChildren().add(depNode);
-                depNode.getChildren().add(empLeaf);
-            }
-        }
-
-        TreeViewGroupe.setEditable(true);
-        TreeViewGroupe.setRoot(rootNode);
-
-        TreeViewGroupe.setCellFactory(new Callback<TreeView<String>, TreeCell<String>>() {
-            @Override
-            public TreeCell<String> call(TreeView<String> p) {
-                return new TextFieldTreeCellImpl();
-            }
-        });
 
     }
 

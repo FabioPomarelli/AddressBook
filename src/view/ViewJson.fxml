@@ -20,17 +20,17 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#Calculation" text="Quit" />
+            <MenuItem mnemonicParsing="false" onAction="#ActionEvent" text="Quit" />
           </items>
         </Menu>
             <Menu mnemonicParsing="false" text="Option">
                <items>
-                  <RadioMenuItem fx:id="menuRagioNoeudSolve" mnemonicParsing="false" onAction="#Calculation" selected="true" text="Noeud Eval Solve">
+                  <RadioMenuItem fx:id="menuRagioNoeudSolve" mnemonicParsing="false" onAction="#ActionEvent" selected="true" text="Noeud Eval Solve">
                      <toggleGroup>
                         <ToggleGroup fx:id="gruppoRadio" />
                      </toggleGroup>
                   </RadioMenuItem>
-                  <RadioMenuItem fx:id="menuRagioJsSolve" mnemonicParsing="false" onAction="#Calculation" text="JavaScript Eval Solve" toggleGroup="$gruppoRadio" />
+                  <RadioMenuItem fx:id="menuRagioJsSolve" mnemonicParsing="false" onAction="#ActionEvent" text="JavaScript Eval Solve" toggleGroup="$gruppoRadio" />
                </items>
             </Menu>
         <Menu mnemonicParsing="false" text="Help">
@@ -58,12 +58,12 @@
                   </AnchorPane>
               </items>
             </SplitPane>
-            <TextField fx:id="TextFieldNom" layoutX="104.0" layoutY="26.0" onAction="#Calculation" />
-            <Button fx:id="ButtonSearch" layoutX="292.0" layoutY="26.0" mnemonicParsing="false" onAction="#Calculation" text="Search" />
-            <Button fx:id="ButtonSafe" layoutX="374.0" layoutY="26.0" mnemonicParsing="false" onAction="#SafeContact" text="Sauvegarder" />
-            <Button layoutX="494.0" layoutY="26.0" mnemonicParsing="false" onAction="#Edit" text="Edit" />
-            <Button layoutX="554.0" layoutY="26.0" mnemonicParsing="false" onAction="#Edit" text="New" />
-            <Button layoutX="618.0" layoutY="26.0" mnemonicParsing="false" onAction="#Hide" text="New Groupe" />
+            <TextField fx:id="TextFieldNom" layoutX="104.0" layoutY="26.0" onAction="#ActionEvent" />
+            <Button fx:id="ButtonSearch" layoutX="292.0" layoutY="26.0" mnemonicParsing="false" onAction="#ActionEvent" text="Search" />
+            <Button fx:id="ButtonSafe" layoutX="374.0" layoutY="26.0" mnemonicParsing="false" onAction="#ActionEvent" text="Sauvegarder" />
+            <Button layoutX="494.0" layoutY="26.0" mnemonicParsing="false" onAction="#ActionEvent" text="Edit" />
+            <Button layoutX="554.0" layoutY="26.0" mnemonicParsing="false" onAction="#ActionEvent" text="New" />
+            <Button layoutX="618.0" layoutY="26.0" mnemonicParsing="false" onAction="#ActionEvent" text="New Groupe" />
             <Label layoutX="49.0" layoutY="68.0" text="Je suis la page pour le fichier JSON" />
       </children>
     </AnchorPane>

@@ -14,22 +14,22 @@ import javafx.stage.Stage;
  *
  * @author pom
  */
-public class ModelEdit extends java.util.Observable {
+public class ModelGroupe extends java.util.Observable {
 private static Stage stage;
 
     public static void setStage(Stage stage) {
-        ModelEdit.stage = stage;
+        ModelGroupe.stage = stage;
     }
-    private static ModelEdit instance = null;
+    private static ModelGroupe instance = null;
     private static Datas data=null;
-    private ModelEdit() {
+    private ModelGroupe() {
         this.data=Datas.getInstance();
 
     }
 
-    public static ModelEdit getInstance() {
+    public static ModelGroupe getInstance() {
         if (instance == null) {
-            instance = new ModelEdit();
+            instance = new ModelGroupe();
 
         }
         return instance;

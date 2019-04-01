@@ -7,6 +7,7 @@ package entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.stage.Stage;
 
 /**
  *
@@ -16,10 +17,46 @@ public class Datas {
 
     private static Datas instance = null;
     private boolean showViewListe = true;
-    private boolean showViewEdit = true;
+    private boolean showViewEdit = false;
+    private boolean showViewJson = false;
+    private Stage ViewListe = null;
+    private Stage ViewEdit = null;
+    private Stage ViewJson = null;
 
     private Datas() {
 
+    }
+
+    public void setViewListe(Stage ViewListe) {
+        this.ViewListe = ViewListe;
+    }
+
+    public void setViewEdit(Stage ViewEdit) {
+        this.ViewEdit = ViewEdit;
+    }
+
+    public void setViewJson(Stage ViewJson) {
+        this.ViewJson = ViewJson;
+    }
+
+    public Stage getViewListe() {
+        return ViewListe;
+    }
+
+    public Stage getViewEdit() {
+        return ViewEdit;
+    }
+
+    public Stage getViewJson() {
+        return ViewJson;
+    }
+
+    public void setShowViewJson(boolean showViewJson) {
+        this.showViewJson = showViewJson;
+    }
+
+    public boolean isShowViewJson() {
+        return showViewJson;
     }
 
     public boolean isShowViewListe() {
@@ -48,7 +85,7 @@ public class Datas {
 
     private List<ListeContact> listeContact = new ArrayList();
 
-    private Formulaire formulaire;
+    public Formulaire formulaire;
 
     public void setFormulaire(Formulaire formulaire) {
         this.formulaire = formulaire;
@@ -67,6 +104,31 @@ public class Datas {
 
     public void setListeContact(List<ListeContact> listecontact) {
         this.listeContact = listecontact;
+
+    }
+
+    public void switchView(boolean ViewListe, boolean ViewEdit, boolean ViewJson) {
+        this.setShowViewEdit(showViewEdit);
+        this.setShowViewJson(showViewJson);
+        this.setShowViewListe(showViewListe);
+        if (ViewListe) {
+            this.ViewListe.show();
+
+        } else {
+            this.ViewListe.hide();
+        }
+        if (ViewEdit) {
+            this.ViewEdit.show();
+
+        } else {
+            this.ViewEdit.hide();
+        }
+        if (ViewJson) {
+            this.ViewJson.show();
+
+        } else {
+            this.ViewJson.hide();
+        }
 
     }
 
