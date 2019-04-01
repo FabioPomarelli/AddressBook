@@ -6,22 +6,13 @@
 package view;
 
 import entity.ListeContact;
-import controller.Controller;
 import entity.Datas;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Observable;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -34,6 +25,7 @@ import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
@@ -41,7 +33,6 @@ import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -92,6 +83,8 @@ public class ViewJson implements View {
 
     @FXML
     private MenuBar MenuBar;
+    @FXML
+    private TextArea TextAreaJson;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -122,8 +115,6 @@ public class ViewJson implements View {
         // TODO*/
     }
 
-   
-
     @FXML
     private void ActionEvent(ActionEvent event) {
         initShow(false);
@@ -139,10 +130,9 @@ public class ViewJson implements View {
     @Override
     public void update(Observable obs, Object obj) {
         Datas data = (Datas) obj;
-        data.getLectureJson()
-        
-        
-     /*
+        TextAreaJson.setText(data.getLectureJson());
+
+        /*
 
         //
         initTreeView(data.getListeContact());
@@ -152,7 +142,7 @@ public class ViewJson implements View {
         initGridPane(forms);
 
         initShow(data.isShowViewListe());
-*/
+         */
     } //update()
 
     private void initGridPane(GridPane grid) {
