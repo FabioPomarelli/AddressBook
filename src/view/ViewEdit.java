@@ -39,11 +39,26 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class ViewListe implements View {
+public class ViewEdit implements View {
     // private Controller controller;
 
     private final Node rootIcon = new ImageView(new Image(getClass().getResourceAsStream("/img/team.png")));
- 
+    //  private final Image depIcon
+    //         = new Image(getClass().getResourceAsStream("department.png"));
+    /* List<Employee> employees = Arrays.<Employee>asList(
+            new ListeContact("Ethan Williams", "Sales Department"),
+            new ListeContact("Emma Jones", "Sales Department"),
+            new ListeContact("Michael Brown", "Sales Department"),
+            new ListeContact("Anna Black", "Sales Department"),
+            new ListeContact("Rodger York", "Sales Department"),
+            new ListeContact("Susan Collins", "Sales Department"),
+            new ListeContact("Mike Graham", "IT Support"),
+            new ListeContact("Judy Mayer", "IT Support"),
+            new ListeContact("Gregory Smith", "IT Support"),
+            new ListeContact("Jacob Smith", "Accounts Department"),
+            new ListeContact("Isabella Johnson", "Accounts Department"));
+    
+     */
     TreeItem<String> rootNode = new TreeItem<String>("MyCompany Human Resources", rootIcon);
 
     private EventHandler controller;
@@ -112,8 +127,7 @@ public class ViewListe implements View {
             System.out.println("textfield changed from " + oldValue + " to " + newValue);
         });
 
-      
-        // TODO*/
+        initShow(false);
     }
 
     @FXML
@@ -126,17 +140,6 @@ public class ViewListe implements View {
     @FXML
     private void SafeContact(ActionEvent event) {
         this.controller.handle(event);
-    }
-
-    @FXML
-    private void Edit(ActionEvent event) {
-        this.controller.handle(event);
-    }
-
-    @FXML
-    private void Hide(ActionEvent event) {
-        initShow(false);
-        // this.controller.handle(event);
     }
 
     @FXML
@@ -154,9 +157,7 @@ public class ViewListe implements View {
         GridPane forms = data.getFormulaire().getFormularieJavaFx();
 
         initGridPane(forms);
-
-        initShow(data.isShowViewListe());
-
+        initShow(data.isShowViewEdit());
     } //update()
 
     private void initGridPane(GridPane grid) {
@@ -165,7 +166,7 @@ public class ViewListe implements View {
 
     private void initShow(boolean show) {
         try {
-            System.out.println("SCENE LISTE"+this.MenuBar.getScene());
+            System.out.println("SCENE EDIT"+this.MenuBar.getScene());
             Stage DashboardStage = (Stage) MenuBar.getScene().getWindow();
             //goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
             if (show) {

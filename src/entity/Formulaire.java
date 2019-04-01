@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,10 +7,10 @@ import java.util.Map;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import model.Decorateur.AElementDecorateur;
-import model.Decorateur.IVisitable;
-import model.ElementSimple.AppliVisitor;
-import model.ElementSimple.SimpleContact;
+import entity.Decorateur.AElementDecorateur;
+import entity.Decorateur.IVisitable;
+import entity.ElementSimple.AppliVisitor;
+import entity.ElementSimple.SimpleContact;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,13 +21,20 @@ import model.ElementSimple.SimpleContact;
  *
  * @author pom
  */
-public class ModelFormulaire {
+public class Formulaire {
 
+    private boolean isEditable=true;
+    private GridPane gridPaneFormalaire;
     private AppliVisitor visitor = new AppliVisitor();
     private List<AElementDecorateur> decos;
     private SimpleContact contact;
 
-    public ModelFormulaire(SimpleContact contact) {
+    
+    public void setEditable(boolean edit){
+        this.isEditable=edit;
+    }
+    
+    public Formulaire(SimpleContact contact) {
         this.contact = contact;
     }
 
@@ -35,7 +42,7 @@ public class ModelFormulaire {
         this.contact = contact;
     }
 
-    public void setFormularieJavaFx(GridPane gridPaneFormalaire) {
+    public void setFormularieJavaFx() {
         System.out.println("SAFEFF");
         //saveGridPaneSimpleContact((GridPane) gridPaneFormalaire.getChildren().get(0));
         List<AElementDecorateur> deco = new ArrayList<>();
@@ -63,7 +70,7 @@ public class ModelFormulaire {
             gridPaneParent.add(this.createGridPaneVisitable(deco), 0, i + 1);
             i++;
         }
-
+        this.gridPaneFormalaire=gridPaneParent;
         return gridPaneParent;
 
     }
@@ -117,7 +124,7 @@ public class ModelFormulaire {
     private GridPane createGridPaneVisitable(IVisitable visitable) {
         //Creating a Grid Pane Simple Contact
         GridPane gridPane = new GridPane();
-
+TextField app;
         List<Map<Integer, String[]>> list = visitable.getAccept(visitor);
         int k = 0;
         for (Map<Integer, String[]> parametres : list) {
@@ -127,7 +134,9 @@ public class ModelFormulaire {
             String appStr[] = parametres.get(k + 1);
 
             gridPane.add(new Label(appStr[0]), 0, k);
-            gridPane.add(new TextField(appStr[1]), 1, k);
+            app=new TextField(appStr[1]);
+            app.setDisable(!this.isEditable);
+            gridPane.add(app, 1, k);
             k += 1;
         }
         return gridPane;

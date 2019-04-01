@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package model.ElementGroupe;
+package entityl.ElementGroupe;
 
 
 
@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
-import model.ElementSimple.SimpleContact;
+import entity.ElementSimple.SimpleContact;
  
 @JsonTypeInfo(use = JsonTypeInfo.Id.MINIMAL_CLASS, include = As.PROPERTY, property = "@class")
 public class GroupeContact {

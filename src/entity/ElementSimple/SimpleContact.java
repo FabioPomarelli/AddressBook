@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.ElementSimple;
+package entity.ElementSimple;
 
 /**
  *
  * @author pom
  */
-import model.Decorateur.IVisitable;
+import entity.Decorateur.IVisitable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import model.Decorateur.AElementDecorateur;
+import entity.Decorateur.AElementDecorateur;
 
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.MINIMAL_CLASS, include = As.PROPERTY, property = "@class")
@@ -72,15 +72,23 @@ public class SimpleContact implements IVisitable {
     }
 
     @Override
-     public void setAccept(IVisitor visitor, List<Map<Integer, String[]>> values, List deco) {
-        System.out.println("valore : " );
-        
+    @JsonIgnore
+    public void setAccept(IVisitor visitor, List<Map<Integer, String[]>> values, List deco) {
+        Map<Integer, String[]> parametres;
+        String param[];
+
+        parametres = values.get(0);
+        param = parametres.get(0);
+        this.nom = param[1];
+
+        parametres = values.get(1);
+        param = parametres.get(1);
+        this.prenom = param[1];
+        this.deco=deco;
+        System.out.println("valore : " + this.nom + " " + this.prenom);
     }
 
-  /*  @Override
-    public String getAccept(IVisitor visitor) {
-        return "ElementSimple";
-    }*/
+ 
 
     @Override
     @JsonIgnore

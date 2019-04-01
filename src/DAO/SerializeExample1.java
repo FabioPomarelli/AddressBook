@@ -20,14 +20,14 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.HashMap;
 import java.util.Map;
-import model.Decorateur.AElementDecorateur;
-import model.Decorateur.AdressePostale;
-import model.Decorateur.Email;
-import model.Decorateur.IElementDecorateur;
-import model.Decorateur.TelephoneFixe;
-import model.Decorateur.TelephoneMobile;
-import model.ElementGroupe.GroupeContact;
-import model.ElementSimple.SimpleContact;
+import entity.Decorateur.AElementDecorateur;
+import entity.Decorateur.AdressePostale;
+import entity.Decorateur.Email;
+import entity.Decorateur.IElementDecorateur;
+import entity.Decorateur.TelephoneFixe;
+import entity.Decorateur.TelephoneMobile;
+import entityl.ElementGroupe.GroupeContact;
+import entity.ElementSimple.SimpleContact;
 
 
 public class SerializeExample1 {

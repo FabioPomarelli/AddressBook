@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.Decorateur;
+package entity.Decorateur;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import model.ElementSimple.IVisitor;
+import entity.ElementSimple.IVisitor;
 
 /**
  *
@@ -24,19 +24,17 @@ public class Email extends AElementDecorateur {
     private String description = "";
     @JsonProperty
     private String email = "";
-    
-   
+
     @JsonIgnore
     public Email() {
-      
+
     }
-    
-   /* @JsonCreator 
+
+    /* @JsonCreator 
     public Email(@JsonProperty("email") String email, @JsonProperty("parametres") List<Map<Integer ,String[]>> parametres) {
        this.parametres=parametres;
        this.email = email;
     }*/
-
     /**
      * Constructeur
      *
@@ -69,7 +67,6 @@ public class Email extends AElementDecorateur {
         this.description = description;
     }
 
-   
     @Override
     public String toString() {
         return "Email [name=, getEmail()=" + getEmail() + " ]";
@@ -96,40 +93,28 @@ public class Email extends AElementDecorateur {
         return list;
 
     }
-    
-     @Override
-    @JsonIgnore
-      public void setAccept(IVisitor visitor, List<Map<Integer, String[]>> values, List deco) {
-        System.out.println("valore : " );
-    }
-    
-    
-   /* @Override
-    @JsonIgnore
-    public void setAccept(IVisitor visitor, String value) {
-        List<Map<Integer, String[]>> list = new ArrayList<Map<Integer, String[]>>();
 
+    @Override
+    @JsonIgnore
+    public void setAccept(IVisitor visitor, List<Map<Integer, String[]>> values, List deco) {
         Map<Integer, String[]> parametres;
-        parametres = new HashMap<>();
-        parametres.put(1, new String[]{"Class", this.getClass().getCanonicalName()});
-        list.add(parametres);
+        String param[];
 
-        parametres = new HashMap<>();
-        parametres.put(2, new String[]{"Description Email", this.description});
-        list.add(parametres);
+        parametres = values.get(0);
+        param = parametres.get(0);
+        this.description = param[1];
 
-        parametres = new HashMap<>();
-        parametres.put(3, new String[]{"Email", this.email});
-        list.add(parametres);
+        parametres = values.get(1);
+        param = parametres.get(1);
+        this.email = param[1];
 
-        return list;
-
-    }*/
+        System.out.println("valore : " + this.email);
+    }
 
     @Override
     @JsonIgnore
     public void accept(IVisitor visitor) {
-    
+
     }
 
 }

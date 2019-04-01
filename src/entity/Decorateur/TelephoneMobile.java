@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.Decorateur;
+package entity.Decorateur;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import model.ElementSimple.IVisitor;
+import entity.ElementSimple.IVisitor;
 
 /**
  *
@@ -32,13 +32,11 @@ public class TelephoneMobile extends AElementDecorateur {
      * @param element représente le type d'une personne (Morale, Entreprise
      * etc...)
      */
-    
-    
     @JsonIgnore
     public TelephoneMobile() {
-      
+
     }
-    
+
     public String getTelephone() {
         return this.telephone;
     }
@@ -74,10 +72,21 @@ public class TelephoneMobile extends AElementDecorateur {
     public void accept(IVisitor visitor) {
     }
 
-     @Override
+    @Override
     @JsonIgnore
-      public void setAccept(IVisitor visitor, List<Map<Integer, String[]>> values, List deco) {
-        System.out.println("valore : " );
+    public void setAccept(IVisitor visitor, List<Map<Integer, String[]>> values, List deco) {
+        Map<Integer, String[]> parametres;
+        String param[];
+
+        parametres = values.get(0);
+        param = parametres.get(0);
+        this.description = param[1];
+
+        parametres = values.get(1);
+        param = parametres.get(1);
+        this.telephone = param[1];
+
+        System.out.println("valore : " + this.telephone);
     }
 
     @Override

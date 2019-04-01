@@ -5,7 +5,6 @@
  */
 package entity;
 
-import model.ModelFormulaire;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,20 +14,48 @@ import java.util.List;
  */
 public class Datas {
 
-    private List<ListeContact> listeContact = new ArrayList();
+    private static Datas instance = null;
+    private boolean showViewListe = true;
+    private boolean showViewEdit = true;
 
-    private ModelFormulaire formulaire;
-
-    public Datas() {
+    private Datas() {
 
     }
 
-    public void setFormulaire(ModelFormulaire formulaire) {
+    public boolean isShowViewListe() {
+        return showViewListe;
+    }
+
+    public void setShowViewListe(boolean ShowViewListe) {
+        this.showViewListe = ShowViewListe;
+    }
+
+    public void setShowViewEdit(boolean ShowViewEdit) {
+        this.showViewEdit = ShowViewEdit;
+    }
+
+    public boolean isShowViewEdit() {
+        return showViewEdit;
+    }
+
+    public static Datas getInstance() {
+        if (instance == null) {
+            instance = new Datas();
+
+        }
+        return instance;
+    }
+
+    private List<ListeContact> listeContact = new ArrayList();
+
+    private Formulaire formulaire;
+
+    public void setFormulaire(Formulaire formulaire) {
         this.formulaire = formulaire;
 
     }
 
-    public ModelFormulaire getFormulaire() {
+    public Formulaire getFormulaire() {
         return this.formulaire;
 
     }

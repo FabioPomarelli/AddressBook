@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.Decorateur;
+package entity.Decorateur;
 
 /**
  *@JsonSubTypes({ @Type(value = AdressePostale.class, name = "AdressePostale"), @Type(value = Email.class, name = "Email"),  @Type(value = TelephoneFixe.class, name = "TelephoneFixe"),  @Type(value = TelephoneMobile.class, name = "TelephoneMobile") })

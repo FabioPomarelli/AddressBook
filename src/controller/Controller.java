@@ -22,8 +22,21 @@ import model.*;
  */
 public class Controller implements EventHandler {
 
-    Model model;
-
+    ModelAgenda modelAgenda;
+    ModelEdit modelEdit;
+    
+    private static Controller instance=null;
+    private Controller(){
+    
+    
+    }
+    public static Controller getInstance(){
+        if(instance==null){
+            instance=new Controller();
+            
+        }
+        return instance;
+    }
     private void mouseEvent(MouseEvent e) {
         
   
@@ -53,7 +66,7 @@ public class Controller implements EventHandler {
                 case ("DIGIT7"):
                 case ("DIGIT8"):
                 case ("DIGIT9"):
-                    model.addValue(key.substring(5, 6));
+                   // model.addValue(key.substring(5, 6));
                     break;
                 case ("NUMPAD0"):
                 case ("NUMPAD1"):
@@ -64,34 +77,7 @@ public class Controller implements EventHandler {
                 case ("NUMPAD6"):
                 case ("NUMPAD7"):
                 case ("NUMPAD8"):
-                case ("NUMPAD9"):
-                    model.addValue(key.substring(6, 7));
-                    break;
-                case ("DECIAMAL"):
-                case ("PERIOD"):
-                    model.addValue(".");
-                    break;
-                case ("MULTIPLY"):
-                    model.addValue("*");
-                    break;
-                case ("DIVIDE"):
-                    model.addValue("/");
-                    break;
-                case ("ADD"):
-                    model.addValue("+");
-                    break;
-                case ("SUBTRACT"):
-                    model.addValue("-");
-                    break;
-                case ("ENTER"):
-                    model.calculate();
-                    break;
-                case ("BACK_SPACE"):
-                    model.deleteLastValue();
-                    break;
-                case ("DELETE"):
-                    model.deleteValue();
-                    break;
+              
             }
 
         }
@@ -104,7 +90,7 @@ public class Controller implements EventHandler {
         
         if (RadioMenuItem.class.getName().equals(e.getSource().getClass().getName())) {
             String radio = ((RadioMenuItem) e.getSource()).getText();
-            model.jobResponce(radio);
+           // model.jobResponce(radio);
 
         }
         if (MenuItem.class.getName().equals(e.getSource().getClass().getName())) {
@@ -122,8 +108,14 @@ public class Controller implements EventHandler {
 
             switch (click) {
                 case ("Sauvegarder"):
-                    model.safe();
+                    modelAgenda.safe();
                     break;
+                case ("Edit"):
+                    modelEdit.edit("edit");
+                    break;
+                case ("New"): 
+                    modelEdit.edit("new");
+                    break;    
                 case ("0"):
                 case ("1"):
                 case ("2"):
@@ -141,7 +133,7 @@ public class Controller implements EventHandler {
                 case ("+"):
                 case ("-"):
                 case ("("):
-                case (")"):
+           /*     case (")"):
                     model.addValue(click);
                     break;
                 case ("="):
@@ -176,7 +168,7 @@ public class Controller implements EventHandler {
                     break;
                 case ("ATAN"):
                     model.addValue("Math.atan(");
-                    break;
+                    break;*/
             }
         }
 
@@ -207,15 +199,24 @@ public class Controller implements EventHandler {
         }
     }
 
-    public void addModel(Model m) {
-        this.model = m;
+    public void addModelAgenda(ModelAgenda m) {
+        this.modelAgenda = m;
     } //addModel()
 
-    public void initModel() {
+      public void addModelEdit(ModelEdit m) {
+        this.modelEdit = m;
+    } //addModel()
+      
+    public void initModelAgenda() {
         
         
         
-        model.init();
+        modelAgenda.init();
     } //initModel()
-
+  public void initModelEdit() {
+        
+        
+        
+        modelEdit.init();
+    } //initModel()
 }

@@ -10,28 +10,6 @@ package model;
  * @author pom
  */
 public interface Model {
-    public void setValue(String value);
-
-    public void incrementValue();
-
-    public void addValue(String str);
-
-    public void deleteValue();
-
-    public void deleteLastValue();
-
-    public void calculate();
-
-    public void init();
-
-    public void setShowMessaggio(boolean toggle);
-
-    public boolean getShowMessaggio();
-
-    public void jobResponce(String responce);
-
-    public void jobResponce();
-    
-    public void safe();
-    
+    public void init() ;
+    public void safe() ;
 }

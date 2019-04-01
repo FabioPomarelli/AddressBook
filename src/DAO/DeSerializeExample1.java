@@ -17,8 +17,8 @@ import org.apache.commons.io.FileUtils;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.ElementGroupe.GroupeContact;
-import model.ElementSimple.SimpleContact;
+import entityl.ElementGroupe.GroupeContact;
+import entity.ElementSimple.SimpleContact;
  
 public class DeSerializeExample1 {
  

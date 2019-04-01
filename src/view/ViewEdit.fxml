@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="658.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewListe">
+<VBox prefHeight="658.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewEdit">
   <children>
-    <MenuBar fx:id="MenuBar" prefHeight="0.0" prefWidth="1057.0" VBox.vgrow="NEVER">
+    <MenuBar prefHeight="0.0" prefWidth="1057.0" VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -41,7 +41,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="492.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
-            <SplitPane dividerPositions="0.40162271805273836" layoutX="38.0" layoutY="116.0" prefHeight="470.0" prefWidth="863.0">
+            <SplitPane dividerPositions="0.40162271805273836" layoutX="38.0" layoutY="27.0" prefHeight="559.0" prefWidth="863.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
@@ -50,19 +50,16 @@
                         
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="511.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <ScrollPane fx:id="ScrollPaneFormulaire" layoutX="16.0" layoutY="26.0" prefHeight="423.0" prefWidth="480.0" />
+                        <ScrollPane fx:id="ScrollPaneFormulaire" layoutX="16.0" layoutY="70.0" prefHeight="482.0" prefWidth="480.0" />
+                        <TextField fx:id="TextFieldNom" layoutX="16.0" layoutY="30.0" onAction="#Calculation" />
+                        <Button fx:id="ButtonSearch" layoutX="204.0" layoutY="30.0" mnemonicParsing="false" onAction="#Calculation" text="Search" />
+                        <Button fx:id="ButtonSafe" layoutX="286.0" layoutY="30.0" mnemonicParsing="false" onAction="#SafeContact" text="Sauvegarder" />
                      </children>
                   </AnchorPane>
               </items>
             </SplitPane>
-            <TextField fx:id="TextFieldNom" layoutX="104.0" layoutY="26.0" onAction="#Calculation" />
-            <Button fx:id="ButtonSearch" layoutX="292.0" layoutY="26.0" mnemonicParsing="false" onAction="#Calculation" text="Search" />
-            <Button fx:id="ButtonSafe" layoutX="374.0" layoutY="26.0" mnemonicParsing="false" onAction="#SafeContact" text="Sauvegarder" />
-            <Button layoutX="494.0" layoutY="26.0" mnemonicParsing="false" onAction="#Edit" text="Edit" />
-            <Button layoutX="554.0" layoutY="26.0" mnemonicParsing="false" onAction="#Edit" text="New" />
-            <Button layoutX="618.0" layoutY="26.0" mnemonicParsing="false" onAction="#Hide" text="New Groupe" />
       </children>
     </AnchorPane>
   </children>

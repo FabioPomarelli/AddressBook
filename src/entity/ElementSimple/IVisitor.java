@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.ElementSimple;
+package entity.ElementSimple;
 
-import model.Decorateur.AdressePostale;
-import model.Decorateur.Email;
+import entity.Decorateur.AdressePostale;
+import entity.Decorateur.Email;
 
 /**
  *

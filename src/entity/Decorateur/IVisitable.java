@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.Decorateur;
+package entity.Decorateur;
 
 import java.util.List;
 import java.util.Map;
-import model.ElementSimple.IVisitor;
+import entity.ElementSimple.IVisitor;
 
 /**
  *

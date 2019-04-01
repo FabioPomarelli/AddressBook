@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.Decorateur;
+package entity.Decorateur;
 
 //import org.json.simple.JSONObject;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import model.ElementSimple.IVisitor;
+import entity.ElementSimple.IVisitor;
 
 /**
  *
@@ -37,11 +37,11 @@ public class AdressePostale extends AElementDecorateur {
      * @param element représente le type d'une personne (Morale, Entreprise
      * etc...)
      */
-     @JsonIgnore
+    @JsonIgnore
     public AdressePostale() {
-      
+
     }
-    
+
     public String getAdress() {
         return this.adress;
     }
@@ -66,7 +66,6 @@ public class AdressePostale extends AElementDecorateur {
         this.adress = adress;
     }
 
-
     @Override
     public String toString() {
         return "AdressePostale [Adresse=" + adress + "]";
@@ -79,8 +78,28 @@ public class AdressePostale extends AElementDecorateur {
 
     @Override
     @JsonIgnore
-     public void setAccept(IVisitor visitor, List<Map<Integer, String[]>> values, List deco) {
-        System.out.println("valore : " );
+    public void setAccept(IVisitor visitor, List<Map<Integer, String[]>> values, List deco) {
+
+        Map<Integer, String[]> parametres;
+        String param[];
+
+        parametres = values.get(0);
+        param = parametres.get(0);
+        this.description = param[1];
+
+        parametres = values.get(1);
+        param = parametres.get(1);
+        this.adress = param[1];
+
+        parametres = values.get(2);
+        param = parametres.get(2);
+        this.codepostale = param[1];
+
+        parametres = values.get(2);
+        param = parametres.get(2);
+        this.ville = param[1];
+
+        System.out.println("valore : " + this.adress + " " + this.codepostale + " " + this.ville);
     }
 
     @Override

@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Model;
 import model.ModelAgenda;
+import model.ModelEdit;
 import view.View;
 
 /**
@@ -25,44 +26,104 @@ import view.View;
  */
 public class Main extends Application {
 
+    static final String VIEW_LISTE = "/view/ViewListe.fxml";
+    static final String VIEW_EDIT = "/view/ViewEdit.fxml";
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-        System.out.println("IMAGE" + getClass().getResourceAsStream("/img/team.png"));
-        System.out.println("IMAGE" + getClass().getResource("/img/team.png"));
+    public void start(Stage stage) {
+        try {
+            
+            
+            
+            startListe(true, stage);
+            startEdit(false, stage);
+        } catch (IOException e) {
+
+            System.out.println("Non parto" + e.getMessage());
+
+        }
+
+    }
+  
+    public void startListe(boolean show, Stage stage) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewListe.fxml"));
+        Parent root = loader.load();
+
+        //ricevo il View Controller
+        //ricevo il View Controller
+        ModelAgenda myModelAgenda = ModelAgenda.getInstance();
+        ModelEdit myModelEdit = ModelEdit.getInstance();
+
+        Controller myController = Controller.getInstance();
+        myController.addModelAgenda(myModelAgenda);
+        myController.addModelEdit(myModelEdit);
+
+        View ViewCtrl = (View) loader.getController();
+        ViewCtrl.addController(myController);
+
+        myModelAgenda.addObserver(ViewCtrl);
+
+        
+        myModelAgenda.setStage(stage);
+        // Image image = new Image("/icons/Calculator.png");
+        //stage.getIcons().add(image);
+        Scene scene = new Scene(root);
+        stage.setTitle("Agenda");
+        stage.setResizable(false);
+        stage.setScene(scene);
+        if (show) {
+
+            stage.show();
+            //  
+        } else {
+            stage.hide();
+        }
+        myController.initModelAgenda();
+        myController.initModelEdit();
+
+    }
+
+    public void startEdit(boolean show, Stage stage1) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewEdit.fxml"));
         // FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewGroupe.fxml"));
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewContact.fxml"));
         Parent root = loader.load();
 
         //ricevo il View Controller
         //ricevo il View Controller
-  
-        ModelAgenda myModelAgenda = new ModelAgenda();
-
-        Controller myController = new Controller();
-        myController.addModel(myModelAgenda);
+        ModelEdit myModelEdit = ModelEdit.getInstance();
+        Controller myController = Controller.getInstance();
+        //myController.addModel(myModelEdit);
         View ViewCtrl = (View) loader.getController();
         ViewCtrl.addController(myController);
 
-        myModelAgenda.addObserver(ViewCtrl);
+        myModelEdit.addObserver(ViewCtrl);
+        
+        
 
-        myController.initModel();
-
-        Scene scene = new Scene(root);
-
+        //Stage stage = new Stage();
         // Image image = new Image("/icons/Calculator.png");
         //stage.getIcons().add(image);
-        stage.setTitle("Calculatrice");
-        stage.setScene(scene);
-        stage.show();
+        Stage stage = new Stage();
+        
+        myModelEdit.setStage(stage);
+        Scene scene = new Scene(root);
+        stage.setTitle("Edit");
         stage.setResizable(false);
+
         stage.setScene(scene);
-        stage.show();
+
+        if (show) {
+            stage.show();
+        } else {
+            stage.hide();
+        }
+        myController.initModelEdit();
 
     }
 
