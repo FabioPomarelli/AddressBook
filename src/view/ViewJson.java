@@ -8,6 +8,11 @@ package view;
 import entity.ListeContact;
 import controller.Controller;
 import entity.Datas;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +20,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -43,7 +50,7 @@ public class ViewJson implements View {
     // private Controller controller;
 
     private final Node rootIcon = new ImageView(new Image(getClass().getResourceAsStream("/img/team.png")));
- 
+
     TreeItem<String> rootNode = new TreeItem<String>("MyCompany Human Resources", rootIcon);
 
     private EventHandler controller;
@@ -112,7 +119,6 @@ public class ViewJson implements View {
             System.out.println("textfield changed from " + oldValue + " to " + newValue);
         });
 
-      
         // TODO*/
     }
 
@@ -147,8 +153,24 @@ public class ViewJson implements View {
     // Called from the Model
     @Override
     public void update(Observable obs, Object obj) {
-        Datas data = (Datas) obj;
 
+        File file = new File("./Agenda.json");
+        BufferedReader br;
+        String data = "";
+        try {
+            String st;
+            br = new BufferedReader(new FileReader(file));
+            while ((st = br.readLine()) != null) {
+                data = data + st + "\n";
+            }
+//System.out.println(data);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ViewJson.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ViewJson.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        //Datas data = (Datas) obj;
         initTreeView(data.getListeContact());
 
         GridPane forms = data.getFormulaire().getFormularieJavaFx();
@@ -165,7 +187,7 @@ public class ViewJson implements View {
 
     private void initShow(boolean show) {
         try {
-            System.out.println("SCENE LISTE"+this.MenuBar.getScene());
+            System.out.println("SCENE LISTE" + this.MenuBar.getScene());
             Stage DashboardStage = (Stage) MenuBar.getScene().getWindow();
             //goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
             if (show) {
