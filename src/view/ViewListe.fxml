@@ -63,6 +63,7 @@
             <Button layoutX="494.0" layoutY="26.0" mnemonicParsing="false" onAction="#Edit" text="Edit" />
             <Button layoutX="554.0" layoutY="26.0" mnemonicParsing="false" onAction="#Edit" text="New" />
             <Button layoutX="618.0" layoutY="26.0" mnemonicParsing="false" onAction="#Hide" text="New Groupe" />
+            <Button fx:id="ShowJson" layoutX="740.0" layoutY="26.0" mnemonicParsing="false" onAction="#ShowJson" text="ShowJson" />
       </children>
     </AnchorPane>
   </children>

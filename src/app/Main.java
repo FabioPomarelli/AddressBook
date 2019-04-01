@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import model.Model;
 import model.ModelAgenda;
 import model.ModelEdit;
+import model.ModelJson;
 import view.View;
 
 /**
@@ -39,8 +40,9 @@ public class Main extends Application {
             
             
             
-            startListe(true, stage);
-            startEdit(false, stage);
+            startListe(false, stage);
+            startEdit(false);
+             startJson(true);
         } catch (IOException e) {
 
             System.out.println("Non parto" + e.getMessage());
@@ -88,7 +90,7 @@ public class Main extends Application {
 
     }
 
-    public void startEdit(boolean show, Stage stage1) throws IOException {
+    public void startEdit(boolean show) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewEdit.fxml"));
         // FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewGroupe.fxml"));
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewContact.fxml"));
@@ -127,22 +129,42 @@ public class Main extends Application {
 
     }
 
-    /*
-    @Override
-    public void start(Stage stage) throws Exception {
-        
-        
-        
-//        Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLDocument.fxml"));
-//        
-//        Scene scene = new Scene(root);
-//        
-//        stage.setScene(scene);
-//        stage.show();
-    }
+    public void startJson(boolean show) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewJson.fxml"));
+        // FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewGroupe.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewContact.fxml"));
+        Parent root = loader.load();
 
-    
-    public static void main(String[] args) {
-        launch(args);
-    }*/
+        //ricevo il View Controller
+        //ricevo il View Controller
+        ModelJson myModelJson = ModelJson.getInstance();
+        Controller myController = Controller.getInstance();
+        //myController.addModel(myModelEdit);
+        View ViewCtrl = (View) loader.getController();
+        ViewCtrl.addController(myController);
+
+        myModelJson.addObserver(ViewCtrl);
+        
+        
+
+        //Stage stage = new Stage();
+        // Image image = new Image("/icons/Calculator.png");
+        //stage.getIcons().add(image);
+        Stage stage = new Stage();
+        
+        myModelJson.setStage(stage);
+        Scene scene = new Scene(root);
+        stage.setTitle("ShowJson");
+        stage.setResizable(false);
+
+        stage.setScene(scene);
+
+        if (show) {
+            stage.show();
+        } else {
+            stage.hide();
+        }
+        myController.initModelEdit();
+
+    }
 }

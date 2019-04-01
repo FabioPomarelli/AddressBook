@@ -24,24 +24,24 @@ public class Controller implements EventHandler {
 
     ModelAgenda modelAgenda;
     ModelEdit modelEdit;
-    
-    private static Controller instance=null;
-    private Controller(){
-    
-    
+    ModelJson modelJson;
+
+    private static Controller instance = null;
+
+    private Controller() {
+
     }
-    public static Controller getInstance(){
-        if(instance==null){
-            instance=new Controller();
-            
+
+    public static Controller getInstance() {
+        if (instance == null) {
+            instance = new Controller();
+
         }
         return instance;
     }
+
     private void mouseEvent(MouseEvent e) {
-        
-  
-        
-        
+
         //model.setShowMessaggio(true);
         //model.jobResponce();
     }
@@ -66,7 +66,7 @@ public class Controller implements EventHandler {
                 case ("DIGIT7"):
                 case ("DIGIT8"):
                 case ("DIGIT9"):
-                   // model.addValue(key.substring(5, 6));
+                    // model.addValue(key.substring(5, 6));
                     break;
                 case ("NUMPAD0"):
                 case ("NUMPAD1"):
@@ -77,7 +77,7 @@ public class Controller implements EventHandler {
                 case ("NUMPAD6"):
                 case ("NUMPAD7"):
                 case ("NUMPAD8"):
-              
+
             }
 
         }
@@ -85,12 +85,10 @@ public class Controller implements EventHandler {
     }
 
     private void actionEvent(ActionEvent e) {
-        
-        
-        
+
         if (RadioMenuItem.class.getName().equals(e.getSource().getClass().getName())) {
             String radio = ((RadioMenuItem) e.getSource()).getText();
-           // model.jobResponce(radio);
+            // model.jobResponce(radio);
 
         }
         if (MenuItem.class.getName().equals(e.getSource().getClass().getName())) {
@@ -113,9 +111,9 @@ public class Controller implements EventHandler {
                 case ("Edit"):
                     modelEdit.edit("edit");
                     break;
-                case ("New"): 
+                case ("New"):
                     modelEdit.edit("new");
-                    break;    
+                    break;
                 case ("0"):
                 case ("1"):
                 case ("2"):
@@ -133,7 +131,7 @@ public class Controller implements EventHandler {
                 case ("+"):
                 case ("-"):
                 case ("("):
-           /*     case (")"):
+                /*     case (")"):
                     model.addValue(click);
                     break;
                 case ("="):
@@ -203,20 +201,21 @@ public class Controller implements EventHandler {
         this.modelAgenda = m;
     } //addModel()
 
-      public void addModelEdit(ModelEdit m) {
+    public void addModelJson(ModelJson m) {
+        this.modelJson = m;
+    } //addModel()
+
+    public void addModelEdit(ModelEdit m) {
         this.modelEdit = m;
     } //addModel()
-      
+
     public void initModelAgenda() {
-        
-        
-        
+
         modelAgenda.init();
     } //initModel()
-  public void initModelEdit() {
-        
-        
-        
+
+    public void initModelEdit() {
+
         modelEdit.init();
     } //initModel()
 }

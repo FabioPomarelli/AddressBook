@@ -43,7 +43,7 @@ public class ViewListe implements View {
     // private Controller controller;
 
     private final Node rootIcon = new ImageView(new Image(getClass().getResourceAsStream("/img/team.png")));
- 
+
     TreeItem<String> rootNode = new TreeItem<String>("MyCompany Human Resources", rootIcon);
 
     private EventHandler controller;
@@ -112,7 +112,6 @@ public class ViewListe implements View {
             System.out.println("textfield changed from " + oldValue + " to " + newValue);
         });
 
-      
         // TODO*/
     }
 
@@ -131,6 +130,12 @@ public class ViewListe implements View {
     @FXML
     private void Edit(ActionEvent event) {
         this.controller.handle(event);
+    }
+
+    @FXML
+    private void ShowJson(ActionEvent event) {
+        //initShow(false);
+        // this.controller.handle(event);
     }
 
     @FXML
@@ -165,7 +170,7 @@ public class ViewListe implements View {
 
     private void initShow(boolean show) {
         try {
-            System.out.println("SCENE LISTE"+this.MenuBar.getScene());
+            System.out.println("SCENE LISTE" + this.MenuBar.getScene());
             Stage DashboardStage = (Stage) MenuBar.getScene().getWindow();
             //goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
             if (show) {
