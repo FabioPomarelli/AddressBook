@@ -5,6 +5,7 @@
  */
 package app;
 
+import DAO.ReadfileJSon;
 import controller.Controller;
 import entity.Datas;
 import java.io.IOException;
@@ -30,6 +31,7 @@ public class Main extends Application {
     static final String VIEW_EDIT = "/view/ViewEditContact.fxml";
     static final String VIEW_JSON = "/view/ViewJson.fxml";
     static final String VIEW_NEWGROUPE = "/view/ViewEditGroupe.fxml";
+    static final String FICHIER_JSON = "./Agenda.json";
     private Controller myController;
     private ModelAgenda myModelAgenda;
     private ModelEdit myModelEdit;
@@ -56,6 +58,9 @@ public class Main extends Application {
             data.setViewListe(startListe(false, stage));
             data.setViewEdit(startEdit(false));
             data.setViewJson(startJson(false));
+            
+            data.setLectureJson(this.startLectureJson());
+            
         } catch (IOException e) {
 
             System.out.println("Non parto" + e.getMessage());
@@ -196,5 +201,11 @@ public class Main extends Application {
         }
         myController.initModelEdit();
         return stage;
+    }
+    
+    public String startLectureJson() throws IOException {
+        ReadfileJSon read=ReadfileJSon.getInstance();
+        String str= read.lecturejson(FICHIER_JSON);
+        return str;
     }
 }

@@ -23,8 +23,18 @@ public class Datas {
     private Stage ViewEdit = null;
     private Stage ViewJson = null;
 
+    
+    private String lectureJson="";
+
     private Datas() {
 
+    }
+    public String getLectureJson() {
+        return lectureJson;
+    }
+
+    public void setLectureJson(String lectureJson) {
+        this.lectureJson = lectureJson;
     }
 
     public void setViewListe(Stage ViewListe) {

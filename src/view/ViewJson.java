@@ -138,24 +138,13 @@ public class ViewJson implements View {
     // Called from the Model
     @Override
     public void update(Observable obs, Object obj) {
+        Datas data = (Datas) obj;
+        data.getLectureJson()
+        
+        
+     /*
 
-        File file = new File("./Agenda.json");
-        BufferedReader br;
-        String data = "";
-        try {
-            String st;
-            br = new BufferedReader(new FileReader(file));
-            while ((st = br.readLine()) != null) {
-                data = data + st + "\n";
-            }
-//System.out.println(data);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ViewJson.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ViewJson.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        //Datas data = (Datas) obj;
+        //
         initTreeView(data.getListeContact());
 
         GridPane forms = data.getFormulaire().getFormularieJavaFx();
@@ -163,7 +152,7 @@ public class ViewJson implements View {
         initGridPane(forms);
 
         initShow(data.isShowViewListe());
-
+*/
     } //update()
 
     private void initGridPane(GridPane grid) {

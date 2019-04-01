@@ -5,11 +5,19 @@
  */
 package DAO;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import view.ViewJson;
 
 /**
  *
@@ -23,6 +31,10 @@ public class TOKILLprova {
     }
 
     public static void main(String[] args) {
+lecturejson();
+
+
+/*
 
         List<Map<Integer, String[]>> lista = new ArrayList();
 
@@ -48,14 +60,32 @@ public class TOKILLprova {
 
         int k = 0;
         for (Map<Integer, String[]> s1 : lista) {
-            
+
             System.out.println(s1.toString());
-            k+=1;
-            String sss[] =s1.get(k);
+            k += 1;
+            String sss[] = s1.get(k);
             System.out.println(sss[0]);
             System.out.println(sss[1]);
-            
-            
+
+        }*/
+
+    }
+
+    public static void lecturejson() {
+        File file = new File("./Agenda.json");
+        BufferedReader br;
+        String data = "";
+        try {
+            String st;
+            br = new BufferedReader(new FileReader(file));
+            while ((st = br.readLine()) != null) {
+                data = data + st + "\n";
+            }
+            System.out.println(data);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ViewJson.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ViewJson.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
