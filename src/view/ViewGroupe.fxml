@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="513.0" prefWidth="569.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewGroupe">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#Calculation" text="Quit" />
+          </items>
+        </Menu>
+            <Menu mnemonicParsing="false" text="Option">
+               <items>
+                  <RadioMenuItem fx:id="menuRagioNoeudSolve" mnemonicParsing="false" onAction="#Calculation" selected="true" text="Noeud Eval Solve">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gruppoRadio" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem fx:id="menuRagioJsSolve" mnemonicParsing="false" onAction="#Calculation" text="JavaScript Eval Solve" toggleGroup="$gruppoRadio" />
+               </items>
+            </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About Fabio Pomarelli LDNR" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="492.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <children>
+            <TextField fx:id="resultdisplay" alignment="CENTER_RIGHT" editable="false" onKeyPressed="#handleTextFieldAction" prefHeight="154.0" prefWidth="579.0" styleClass="text-field" stylesheets="@../styles/Styles.css">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </TextField>
+            <Pane layoutY="154.0" prefHeight="329.0" prefWidth="579.0" style="-fx-background-color: #0288d1;">
+               <children>
+                  <GridPane fx:id="GridPaneButtonNombre" layoutX="14.0" layoutY="15.0" prefHeight="300.0" prefWidth="230.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button fx:id="Button7" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="7" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Button fx:id="Button8" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="8" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        <Button fx:id="Button9" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="9" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                        <Button fx:id="Button4" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="4" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <Button fx:id="Button5" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="Button6" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Button fx:id="Button1" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="1" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Button fx:id="Button2" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="Button3" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Button fx:id="Button0" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <Button fx:id="ButtonDot" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button fx:id="ButtonPow" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="^" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Button fx:id="ButtonParOuv" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="(" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <Button fx:id="ButtonParFer" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="75.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text=")" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+                  <GridPane fx:id="GridPaneButtonOper" layoutX="260.0" layoutY="15.0" prefHeight="300.0" prefWidth="70.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button fx:id="ButtonDiv" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="/" GridPane.rowIndex="0" />
+                        <Button fx:id="ButtonMul" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="*" GridPane.rowIndex="1" />
+                        <Button fx:id="ButtonMinus" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="-" GridPane.rowIndex="2" />
+                        <Button fx:id="ButtonPlus" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonNum" stylesheets="@../styles/Styles.css" text="+" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="334.0" layoutY="15.0" prefHeight="300.0" prefWidth="70.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="7.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="7.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="86.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button fx:id="ButtonC" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonOper" stylesheets="@../styles/Styles.css" text="C" GridPane.rowIndex="0" />
+                        <Button fx:id="ButtonCE" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonOper" stylesheets="@../styles/Styles.css" text="CE" GridPane.rowIndex="1" />
+                        <Button fx:id="ButtonEgale" mnemonicParsing="false" onAction="#Calculation" prefHeight="136.0" prefWidth="70.0" styleClass="buttonOper" stylesheets="@../styles/Styles.css" text="=" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <Pane layoutX="415.0" onMouseClicked="#handleMouseEvent" prefHeight="329.0" prefWidth="164.0">
+                     <children>
+                        <GridPane fx:id="GridPaneButtonJS1" layoutX="6.0" layoutY="15.0" prefHeight="300.0" prefWidth="70.0" styleClass="buttonjs" stylesheets="@../styles/Styles.css">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Button fx:id="ButtonPI" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonJs" stylesheets="@../styles/Styles.css" text="PI" GridPane.rowIndex="0" />
+                              <Button fx:id="ButtonSin" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonJs" stylesheets="@../styles/Styles.css" text="SIN" GridPane.rowIndex="1" />
+                              <Button fx:id="ButtonCos" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonJs" stylesheets="@../styles/Styles.css" text="COS" GridPane.rowIndex="2" />
+                              <Button fx:id="ButtonTan" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonJs" stylesheets="@../styles/Styles.css" text="TAN" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <GridPane fx:id="GridPaneButtonJS2" layoutX="88.0" layoutY="15.0" prefHeight="300.0" prefWidth="70.0" styleClass="buttonjs" stylesheets="@../styles/Styles.css">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Button fx:id="ButtonSqrt" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonJs" stylesheets="@../styles/Styles.css" text="SQRT" GridPane.rowIndex="0" />
+                              <Button fx:id="ButtonAsin" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonJs" stylesheets="@../styles/Styles.css" text="ASIN" GridPane.rowIndex="1" />
+                              <Button fx:id="ButtonAcos" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonJs" stylesheets="@../styles/Styles.css" text="ACOS" GridPane.rowIndex="2" />
+                              <Button fx:id="ButtonAtan" mnemonicParsing="false" onAction="#Calculation" prefHeight="60.0" prefWidth="70.0" styleClass="buttonJs" stylesheets="@../styles/Styles.css" text="ATAN" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

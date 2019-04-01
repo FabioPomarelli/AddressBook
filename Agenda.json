@@ -1,0 +1,53 @@
+{
+  "@class" : ".GroupeContact",
+  "nomgroupe" : "agendaaaa",
+  "contacts" : [ {
+    "@class" : ".SimpleContact",
+    "nom" : "Fabio",
+    "prenom" : "Pomarelli",
+    "deco" : [ {
+      "@class" : "model.Decorateur.Email",
+      "email" : "email@email.com",
+      "description" : "",
+      "parametres" : null
+    }, {
+      "@class" : "model.Decorateur.AdressePostale",
+      "adress" : "rue",
+      "description" : "",
+      "codepostale" : "",
+      "ville" : ""
+    }, {
+      "@class" : "model.Decorateur.TelephoneFixe",
+      "telephone" : "05050500550",
+      "description" : ""
+    }, {
+      "@class" : "model.Decorateur.TelephoneMobile",
+      "telephone" : "0606060606",
+      "description" : ""
+    } ]
+  }, {
+    "@class" : ".SimpleContact",
+    "nom" : "Florent",
+    "prenom" : "fffff",
+    "deco" : [ {
+      "@class" : "model.Decorateur.Email",
+      "email" : "email@email.com2",
+      "description" : "",
+      "parametres" : null
+    }, {
+      "@class" : "model.Decorateur.AdressePostale",
+      "adress" : "place",
+      "description" : "",
+      "codepostale" : "",
+      "ville" : ""
+    }, {
+      "@class" : "model.Decorateur.TelephoneFixe",
+      "telephone" : "050505005502",
+      "description" : ""
+    }, {
+      "@class" : "model.Decorateur.TelephoneMobile",
+      "telephone" : "06060606062",
+      "description" : ""
+    } ]
+  } ]
+}

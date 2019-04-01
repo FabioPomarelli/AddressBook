@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="658.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewListe">
+  <children>
+    <MenuBar prefHeight="0.0" prefWidth="1057.0" VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#Calculation" text="Quit" />
+          </items>
+        </Menu>
+            <Menu mnemonicParsing="false" text="Option">
+               <items>
+                  <RadioMenuItem fx:id="menuRagioNoeudSolve" mnemonicParsing="false" onAction="#Calculation" selected="true" text="Noeud Eval Solve">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gruppoRadio" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem fx:id="menuRagioJsSolve" mnemonicParsing="false" onAction="#Calculation" text="JavaScript Eval Solve" toggleGroup="$gruppoRadio" />
+               </items>
+            </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About Fabio Pomarelli LDNR" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="492.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <children>
+            <SplitPane dividerPositions="0.40162271805273836" layoutX="38.0" layoutY="27.0" prefHeight="559.0" prefWidth="863.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <TreeView fx:id="TreeViewGroupe" layoutX="2.0" layoutY="3.0" prefHeight="559.0" prefWidth="330.0" />
+                      
+                        
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <ScrollPane fx:id="ScrollPaneFormulaire" layoutX="16.0" layoutY="70.0" prefHeight="482.0" prefWidth="480.0" />
+                        <TextField fx:id="TextFieldNom" layoutX="16.0" layoutY="30.0" onAction="#Calculation" />
+                        <Button fx:id="ButtonSearch" layoutX="204.0" layoutY="30.0" mnemonicParsing="false" onAction="#Calculation" text="Search" />
+                        <Button fx:id="ButtonSafe" layoutX="286.0" layoutY="30.0" mnemonicParsing="false" onAction="#SafeContact" text="Sauvegarder" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
